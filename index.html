@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>週刊！AIクリエイターズ・スタジオ | Neural Creative Network</title>
+    <meta name="description" content="AIの思考回路に接続し、創作の未来を体験せよ。GPTs制作のプロが贈る次世代AIクリエイティブ体験">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+</head>
+<body>
+    <!-- Neural Network Background -->
+    <div class="neural-bg">
+        <canvas id="neural-canvas"></canvas>
+        <div class="neural-overlay"></div>
+    </div>
+
+    <!-- Loading Sequence -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-container">
+            <div class="neural-logo">
+                <div class="logo-hexagon">
+                    <span class="material-symbols-outlined">psychology</span>
+                </div>
+                <div class="logo-connections"></div>
+            </div>
+            <h1 class="loading-title">AI CREATORS STUDIO</h1>
+            <p class="loading-subtitle">苦手を持つ人のためのAI創作支援</p>
+            <div class="loading-progress">
+                <div class="progress-nodes">
+                    <div class="node active"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="loading-status">Connecting to AI Network...</span>
+                    <span id="loading-percent">0%</span>
+                </div>
+            </div>
+            <button id="enter-neural" class="neural-btn" style="display: none;">
+                <span>スタジオに入る</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Interface -->
+    <main id="main-interface" class="main-interface" style="display: none;">
+        <!-- Navigation Cluster -->
+        <nav class="nav-cluster">
+            <div class="nav-node central-node" data-section="home">
+                <span class="material-symbols-outlined">hub</span>
+                <span class="node-label">HUB</span>
+            </div>
+            <div class="nav-connection"></div>
+            <div class="nav-node" data-section="concept">
+                <span class="material-symbols-outlined">lightbulb</span>
+                <span class="node-label">CONCEPT</span>
+            </div>
+            <div class="nav-node" data-section="content">
+                <span class="material-symbols-outlined">data_object</span>
+                <span class="node-label">DATA</span>
+            </div>
+            <div class="nav-node" data-section="plans">
+                <span class="material-symbols-outlined">account_tree</span>
+                <span class="node-label">ACCESS</span>
+            </div>
+            <div class="nav-node" data-section="contact">
+                <span class="material-symbols-outlined">share</span>
+                <span class="node-label">LINK</span>
+            </div>
+        </nav>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <button class="control-btn" id="theme-toggle">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+            <button class="control-btn" id="neural-toggle">
+                <span class="material-symbols-outlined">account_tree</span>
+            </button>
+            <button class="control-btn" id="sound-toggle">
+                <span class="material-symbols-outlined">volume_up</span>
+            </button>
+        </div>
+
+        <!-- Content Sections -->
+        <div class="content-space">
+            <!-- Home Section -->
+            <section id="home" class="content-panel active">
+                <div class="panel-header">
+                    <h1 class="main-title">
+                        <span class="title-prefix">週刊！</span>
+                        <span class="title-main">AIクリエイターズ・スタジオ</span>
+                    </h1>
+                    <div class="title-connections"></div>
+                </div>
+
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="status-badge">
+                            <span class="material-symbols-outlined">schedule</span>
+                            <span>毎週水曜日配信</span>
+                        </div>
+                        <h2 class="hero-subtitle">苦手を持つ人こそ、AIで「創作する側」へ</h2>
+                        <div class="hero-description">
+                            <p>文章が苦手、話すのが苦手、考えをまとめるのが苦手...</p>
+                            <p>そんな「ちょっとした苦手」を抱えているあなたへ。</p>
+                            <p class="highlight-text">AIを使って創作できる時代がきています。</p>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="https://note.com/yakiimo_blog/membership" target="_blank" class="neural-btn primary">
+                                <span>今すぐ参加する</span>
+                                <div class="btn-glow"></div>
+                            </a>
+                            <div class="price-display">
+                                <span class="price-currency">¥</span>
+                                <span class="price-amount">500</span>
+                                <span class="price-period">/月</span>
+                                <span class="price-label">から始められます</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-hexagon" data-value="250">
+                            <div class="hex-content">
+                                <span class="material-symbols-outlined">smart_toy</span>
+                                <span class="stat-number">250</span>
+                                <span class="stat-label">GPTs制作<br>実績</span>
+                            </div>
+                        </div>
+                        <div class="stat-hexagon" data-value="600">
+                            <div class="hex-content">
+                                <span class="material-symbols-outlined">trending_up</span>
+                                <span class="stat-number">600+</span>
+                                <span class="stat-label">AI作品<br>販売</span>
+                            </div>
+                        </div>
+                        <div class="stat-hexagon" data-value="410">
+                            <div class="hex-content">
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                                <span class="stat-number">410</span>
+                                <span class="stat-label">ブログAIチーム<br>突破</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Concept Section -->
+            <section id="concept" class="content-panel">
+                <div class="panel-header">
+                    <h2 class="section-title">AIクリエイターズ・スタジオのコンセプト</h2>
+                    <div class="section-subtitle">なぜ始めたのか</div>
+                </div>
+
+                <div class="concept-grid">
+                    <div class="concept-card problem">
+                        <div class="card-header">
+                            <span class="material-symbols-outlined">error</span>
+                            <h3>現状の課題</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="error-message">
+                                <p>"「稼げる」「効率化できる」「自動化で楽になる」"</p>
+                                <p>AI界隈にいると、そんな話ばかりが目立っています。</p>
+                                <p class="error-highlight">でも、なんか違うなー。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card solution">
+                        <div class="card-header">
+                            <span class="material-symbols-outlined">psychology</span>
+                            <h3>なぜ始めたのか</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>効率化や収益化の話が多いAI界隈。</p>
+                            <p>でも、<strong>それだけじゃないんじゃないか</strong>って思ったんです。</p>
+                            
+                            <div class="target-users">
+                                <h4>こんな人こそ、AIが味方になる</h4>
+                                <div class="user-list">
+                                    <div class="user-type">
+                                        <span class="material-symbols-outlined">edit</span>
+                                        <span>文章を書くのが遅い人</span>
+                                    </div>
+                                    <div class="user-type">
+                                        <span class="material-symbols-outlined">record_voice_over</span>
+                                        <span>伝えたい！けど、話すのが苦手な人</span>
+                                    </div>
+                                    <div class="user-type">
+                                        <span class="material-symbols-outlined">psychology_alt</span>
+                                        <span>考えが纏まらない、自信が持てない人</span>
+                                    </div>
+                                    <div class="user-type">
+                                        <span class="material-symbols-outlined">accessibility</span>
+                                        <span>社会的に「ハンディキャップ」と言われる特性を持つ人</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="conclusion">
+                                <p>「ちょっとした苦手」があるからこそ、</p>
+                                <p class="highlight-conclusion">AIが強い味方になってくれる。</p>
+                                <p><strong>そう信じて、このスタジオを始めました。</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Section -->
+            <section id="content" class="content-panel">
+                <div class="panel-header">
+                    <h2 class="section-title">3つのコンテンツをお届け</h2>
+                    <div class="section-subtitle">実践的なAIノウハウから制作の裏話まで、幅広くカバーします</div>
+                </div>
+
+                <div class="data-streams">
+                    <div class="stream-card">
+                        <div class="stream-header">
+                            <span class="material-symbols-outlined">auto_stories</span>
+                            <h3>裏話・実体験</h3>
+                            <div class="stream-status">ACTIVE</div>
+                        </div>
+                        <div class="stream-content">
+                            <ul class="stream-data">
+                                <li>初期プロトタイプ「ブログAIチーム」開発ログ</li>
+                                <li>GPTs収益化アルゴリズム思考トレース</li>
+                                <li>リアルタイム開発プロセス記録</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="stream-card">
+                        <div class="stream-header">
+                            <span class="material-symbols-outlined">psychology</span>
+                            <h3>マインド・マーケティング</h3>
+                            <div class="stream-status">ACTIVE</div>
+                        </div>
+                        <div class="stream-content">
+                            <ul class="stream-data">
+                                <li>GPTs収益化ニューラルマップ（0→1突破）</li>
+                                <li>1→100スケーリング認知アルゴリズム</li>
+                                <li>AI作品販売マインドセット最適化</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="stream-card">
+                        <div class="stream-header">
+                            <span class="material-symbols-outlined">code</span>
+                            <h3>AIテクニック・最新情報</h3>
+                            <div class="stream-status">ACTIVE</div>
+                        </div>
+                        <div class="stream-content">
+                            <ul class="stream-data">
+                                <li>GPTs初期化～実装プロトコル（初心者）</li>
+                                <li>ナレッジベース統合技術（中級者）</li>
+                                <li>API連携高度実装（上級者）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="premium-access">
+                    <div class="access-icon">
+                        <span class="material-symbols-outlined">admin_panel_settings</span>
+                    </div>
+                    <div class="access-content">
+                        <h3>PREMIUM DATA ACCESS</h3>
+                        <p>GPTsクリエイターマガジン全データベースへの無制限アクセス権限を付与。</p>
+                        <p>市販の学習データより高い精度を保証します。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Plans Section -->
+            <section id="plans" class="content-panel">
+                <div class="panel-header">
+                    <h2 class="section-title">選べる3つのプラン</h2>
+                    <div class="section-subtitle">あなたのスタイルに合わせてお選びください</div>
+                </div>
+
+                <div class="access-grid">
+                    <div class="access-card basic">
+                        <div class="card-circuit"></div>
+                        <div class="access-header">
+                            <h3>のぞき見スタジオ</h3>
+                            <p class="access-subtitle">読むだけプラン</p>
+                        </div>
+                        <div class="access-price">
+                            <span class="currency">¥</span>
+                            <span class="amount">500</span>
+                            <span class="period">/月</span>
+                        </div>
+                        <div class="access-description">「サクッと読みたい」におすすめ！</div>
+                        <div class="access-features">
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>毎週１〜２本の記事更新</span>
+                            </div>
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>全記事読み放題</span>
+                            </div>
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>AI最新トレンド（不定期）</span>
+                            </div>
+                        </div>
+                        <a href="https://note.com/yakiimo_blog/membership" target="_blank" class="neural-btn access-btn">
+                            <span>このプランで始める</span>
+                            <div class="btn-glow"></div>
+                        </a>
+                    </div>
+
+                    <div class="access-card premium featured">
+                        <div class="featured-badge">人気No.1</div>
+                        <div class="card-circuit premium-circuit"></div>
+                        <div class="access-header">
+                            <h3>みんなのスタジオ</h3>
+                            <p class="access-subtitle">コミュニティプラン</p>
+                        </div>
+                        <div class="access-price">
+                            <span class="currency">¥</span>
+                            <span class="amount">980</span>
+                            <span class="period">/月</span>
+                        </div>
+                        <div class="access-description">モチベ維持したい人におすすめ！</div>
+                        <div class="access-features">
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>のぞき見スタジオの全特典</span>
+                            </div>
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>Discord招待</span>
+                            </div>
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>テキスト相談あり</span>
+                            </div>
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>月１グループ活動会</span>
+                            </div>
+                            <div class="feature warning">
+                                <span class="material-symbols-outlined">priority_high</span>
+                                <span>新規参加は毎月5名限定</span>
+                            </div>
+                        </div>
+                        <a href="https://note.com/yakiimo_blog/membership" target="_blank" class="neural-btn access-btn premium">
+                            <span>このプランで始める</span>
+                            <div class="btn-glow"></div>
+                        </a>
+                    </div>
+
+                    <div class="access-card enterprise">
+                        <div class="card-circuit"></div>
+                        <div class="access-header">
+                            <h3>ガチ相談</h3>
+                            <p class="access-subtitle">1 on 1プラン</p>
+                        </div>
+                        <div class="access-price">
+                            <span class="currency">¥</span>
+                            <span class="amount">3,980</span>
+                            <span class="period">/月</span>
+                        </div>
+                        <div class="access-description">スポット相談したい人に！</div>
+                        <div class="access-features">
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>全プランの特典</span>
+                            </div>
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>個別戦略相談</span>
+                            </div>
+                            <div class="feature">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>Web相談（1時間×2回/月）</span>
+                            </div>
+                            <div class="feature warning">
+                                <span class="material-symbols-outlined">priority_high</span>
+                                <span>毎月1〜2名限定</span>
+                            </div>
+                        </div>
+                        <a href="https://note.com/yakiimo_blog/membership" target="_blank" class="neural-btn access-btn">
+                            <span>このプランで始める</span>
+                            <div class="btn-glow"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bonus-notification">
+                    <span class="material-symbols-outlined">notification_important</span>
+                    <span>早期参加者限定：その月だけの限定GPTsプレゼント！</span>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="content-panel">
+                <div class="panel-header">
+                    <h2 class="section-title">ご不明点やご相談はお気軽に</h2>
+                    <div class="section-subtitle">お問い合わせ先</div>
+                </div>
+
+                <div class="connection-grid">
+                    <a href="https://x.com/se_yakiimosan" target="_blank" class="connection-node">
+                        <div class="connection-icon">
+                            <span class="material-symbols-outlined">alternate_email</span>
+                        </div>
+                        <div class="connection-info">
+                            <h3>X（Twitter）</h3>
+                            <p>@se_yakiimosan</p>
+                            <div class="connection-status">オンライン</div>
+                        </div>
+                    </a>
+
+                    <a href="https://line.me/" target="_blank" class="connection-node">
+                        <div class="connection-icon">
+                            <span class="material-symbols-outlined">chat</span>
+                        </div>
+                        <div class="connection-info">
+                            <h3>公式LINE</h3>
+                            <p>個別相談可能</p>
+                            <div class="connection-status">対応中</div>
+                        </div>
+                    </a>
+
+                    <a href="https://yakiimosan.com/" target="_blank" class="connection-node">
+                        <div class="connection-icon">
+                            <span class="material-symbols-outlined">language</span>
+                        </div>
+                        <div class="connection-info">
+                            <h3>ブログ</h3>
+                            <p>yakiimosan.com</p>
+                            <div class="connection-status">公開中</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="final-message">
+                    <h3>苦手なまま、始めてもいい場所</h3>
+                    <p>完璧じゃなくても、うまくできなくても、</p>
+                    <p>AIと一緒なら、何かを「つくる側」になれる。</p>
+                    <p class="message-emphasis">あなたの「やってみたい」という素直な気持ちの後押しになったら、嬉しいです！</p>
+                    <a href="https://note.com/yakiimo_blog/membership" target="_blank" class="neural-btn primary large">
+                        <span>AIクリエイター・スタジオを覗いてみる</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Status Display -->
+        <div class="status-display">
+            <div class="status-item">
+                <span class="material-symbols-outlined">schedule</span>
+                <span>WEEKLY_TRANSMISSION</span>
+            </div>
+            <div class="status-item">
+                <span class="material-symbols-outlined">group</span>
+                <span>500+ CONNECTED</span>
+            </div>
+            <div class="status-item">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <span>GPTs_SPECIALIST</span>
+            </div>
+            <div class="status-spacer"></div>
+            <div class="status-item">
+                <span id="neural-time">00:00:00</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
